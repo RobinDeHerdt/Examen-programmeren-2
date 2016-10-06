@@ -1,0 +1,49 @@
+﻿@model IEnumerable<HHS_MVC.Models.tblDocent>
+
+@{
+    ViewBag.Title = "Docenten";
+    Layout = "~/Views/Shared/_IntranetLayout.cshtml";
+}
+
+<h2>Docenten</h2>
+
+<p>
+    @Html.ActionLink("Maak nieuwe docent aan", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.voornaam)*@
+            Voornaam
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.achternaam)*@
+            Achternaam
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.email)*@
+            Email
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.voornaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.achternaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.ActionLink("Bewerken", "Edit", new { id=item.docent_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.docent_id }) |
+            @Html.ActionLink("Verwijderen", "Delete", new { id=item.docent_id })
+        </td>
+    </tr>
+}
+
+</table>

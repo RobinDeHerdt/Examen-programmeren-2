@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbSchoolModelStoreContainer" CdmEntityContainer="dbSchoolEntities">
+    <EntitySetMapping Name="tblDocents">
+      <EntityTypeMapping TypeName="dbSchoolModel.tblDocent">
+        <MappingFragment StoreEntitySet="tblDocent">
+          <ScalarProperty Name="docent_id" ColumnName="docent_id" />
+          <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+          <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKlasgroeps">
+      <EntityTypeMapping TypeName="dbSchoolModel.tblKlasgroep">
+        <MappingFragment StoreEntitySet="tblKlasgroep">
+          <ScalarProperty Name="klasgroep_id" ColumnName="klasgroep_id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="klascode" ColumnName="klascode" />
+          <ScalarProperty Name="richting_id" ColumnName="richting_id" />
+          <ScalarProperty Name="docent_id" ColumnName="docent_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRichtings">
+      <EntityTypeMapping TypeName="dbSchoolModel.tblRichting">
+        <MappingFragment StoreEntitySet="tblRichting">
+          <ScalarProperty Name="richting_id" ColumnName="richting_id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStudents">
+      <EntityTypeMapping TypeName="dbSchoolModel.tblStudent">
+        <MappingFragment StoreEntitySet="tblStudent">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+          <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+          <ScalarProperty Name="email_ouder" ColumnName="email_ouder" />
+          <ScalarProperty Name="rapport_wiskunde" ColumnName="rapport_wiskunde" />
+          <ScalarProperty Name="rapport_frans" ColumnName="rapport_frans" />
+          <ScalarProperty Name="rapport_engels" ColumnName="rapport_engels" />
+          <ScalarProperty Name="rapport_sport" ColumnName="rapport_sport" />
+          <ScalarProperty Name="rapport_biologie" ColumnName="rapport_biologie" />
+          <ScalarProperty Name="klasgroep_id" ColumnName="klasgroep_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

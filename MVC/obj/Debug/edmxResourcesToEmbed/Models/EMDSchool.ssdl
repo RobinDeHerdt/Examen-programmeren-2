@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbSchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblDocent">
+    <Key>
+      <PropertyRef Name="docent_id" />
+    </Key>
+    <Property Name="docent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="voornaam" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="achternaam" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tblKlasgroep">
+    <Key>
+      <PropertyRef Name="klasgroep_id" />
+    </Key>
+    <Property Name="klasgroep_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="naam" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="klascode" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="richting_id" Type="int" />
+    <Property Name="docent_id" Type="int" />
+  </EntityType>
+  <EntityType Name="tblRichting">
+    <Key>
+      <PropertyRef Name="richting_id" />
+    </Key>
+    <Property Name="richting_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="naam" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="omschrijving" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblStudent">
+    <Key>
+      <PropertyRef Name="student_id" />
+    </Key>
+    <Property Name="student_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="voornaam" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="achternaam" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email_ouder" Type="varchar" MaxLength="255" />
+    <Property Name="rapport_wiskunde" Type="float" />
+    <Property Name="rapport_frans" Type="float" />
+    <Property Name="rapport_engels" Type="float" />
+    <Property Name="rapport_sport" Type="float" />
+    <Property Name="rapport_biologie" Type="float" />
+    <Property Name="klasgroep_id" Type="int" />
+  </EntityType>
+  <Association Name="FK__tblKlasgr__docen__15502E78">
+    <End Role="tblDocent" Type="Self.tblDocent" Multiplicity="0..1" />
+    <End Role="tblKlasgroep" Type="Self.tblKlasgroep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDocent">
+        <PropertyRef Name="docent_id" />
+      </Principal>
+      <Dependent Role="tblKlasgroep">
+        <PropertyRef Name="docent_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblKlasgr__richt__145C0A3F">
+    <End Role="tblRichting" Type="Self.tblRichting" Multiplicity="0..1" />
+    <End Role="tblKlasgroep" Type="Self.tblKlasgroep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRichting">
+        <PropertyRef Name="richting_id" />
+      </Principal>
+      <Dependent Role="tblKlasgroep">
+        <PropertyRef Name="richting_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblStuden__klasg__182C9B23">
+    <End Role="tblKlasgroep" Type="Self.tblKlasgroep" Multiplicity="0..1" />
+    <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKlasgroep">
+        <PropertyRef Name="klasgroep_id" />
+      </Principal>
+      <Dependent Role="tblStudent">
+        <PropertyRef Name="klasgroep_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbSchoolModelStoreContainer">
+    <EntitySet Name="tblDocent" EntityType="Self.tblDocent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKlasgroep" EntityType="Self.tblKlasgroep" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRichting" EntityType="Self.tblRichting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStudent" EntityType="Self.tblStudent" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblKlasgr__docen__15502E78" Association="Self.FK__tblKlasgr__docen__15502E78">
+      <End Role="tblDocent" EntitySet="tblDocent" />
+      <End Role="tblKlasgroep" EntitySet="tblKlasgroep" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblKlasgr__richt__145C0A3F" Association="Self.FK__tblKlasgr__richt__145C0A3F">
+      <End Role="tblRichting" EntitySet="tblRichting" />
+      <End Role="tblKlasgroep" EntitySet="tblKlasgroep" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblStuden__klasg__182C9B23" Association="Self.FK__tblStuden__klasg__182C9B23">
+      <End Role="tblKlasgroep" EntitySet="tblKlasgroep" />
+      <End Role="tblStudent" EntitySet="tblStudent" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

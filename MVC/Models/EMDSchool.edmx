@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbSchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblDocent">
+          <Key>
+            <PropertyRef Name="docent_id" />
+          </Key>
+          <Property Name="docent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voornaam" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="achternaam" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblKlasgroep">
+          <Key>
+            <PropertyRef Name="klasgroep_id" />
+          </Key>
+          <Property Name="klasgroep_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naam" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="klascode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="richting_id" Type="int" />
+          <Property Name="docent_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tblRichting">
+          <Key>
+            <PropertyRef Name="richting_id" />
+          </Key>
+          <Property Name="richting_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naam" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="omschrijving" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="student_id" />
+          </Key>
+          <Property Name="student_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voornaam" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="achternaam" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="email_ouder" Type="varchar" MaxLength="255" />
+          <Property Name="rapport_wiskunde" Type="float" />
+          <Property Name="rapport_frans" Type="float" />
+          <Property Name="rapport_engels" Type="float" />
+          <Property Name="rapport_sport" Type="float" />
+          <Property Name="rapport_biologie" Type="float" />
+          <Property Name="klasgroep_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__tblKlasgr__docen__15502E78">
+          <End Role="tblDocent" Type="Self.tblDocent" Multiplicity="0..1" />
+          <End Role="tblKlasgroep" Type="Self.tblKlasgroep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDocent">
+              <PropertyRef Name="docent_id" />
+            </Principal>
+            <Dependent Role="tblKlasgroep">
+              <PropertyRef Name="docent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblKlasgr__richt__145C0A3F">
+          <End Role="tblRichting" Type="Self.tblRichting" Multiplicity="0..1" />
+          <End Role="tblKlasgroep" Type="Self.tblKlasgroep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRichting">
+              <PropertyRef Name="richting_id" />
+            </Principal>
+            <Dependent Role="tblKlasgroep">
+              <PropertyRef Name="richting_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblStuden__klasg__182C9B23">
+          <End Role="tblKlasgroep" Type="Self.tblKlasgroep" Multiplicity="0..1" />
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKlasgroep">
+              <PropertyRef Name="klasgroep_id" />
+            </Principal>
+            <Dependent Role="tblStudent">
+              <PropertyRef Name="klasgroep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbSchoolModelStoreContainer">
+          <EntitySet Name="tblDocent" EntityType="Self.tblDocent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKlasgroep" EntityType="Self.tblKlasgroep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRichting" EntityType="Self.tblRichting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStudent" EntityType="Self.tblStudent" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblKlasgr__docen__15502E78" Association="Self.FK__tblKlasgr__docen__15502E78">
+            <End Role="tblDocent" EntitySet="tblDocent" />
+            <End Role="tblKlasgroep" EntitySet="tblKlasgroep" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblKlasgr__richt__145C0A3F" Association="Self.FK__tblKlasgr__richt__145C0A3F">
+            <End Role="tblRichting" EntitySet="tblRichting" />
+            <End Role="tblKlasgroep" EntitySet="tblKlasgroep" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblStuden__klasg__182C9B23" Association="Self.FK__tblStuden__klasg__182C9B23">
+            <End Role="tblKlasgroep" EntitySet="tblKlasgroep" />
+            <End Role="tblStudent" EntitySet="tblStudent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbSchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblDocent">
+          <Key>
+            <PropertyRef Name="docent_id" />
+          </Key>
+          <Property Name="docent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voornaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="achternaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblKlasgroeps" Relationship="Self.FK__tblKlasgr__docen__15502E78" FromRole="tblDocent" ToRole="tblKlasgroep" />
+        </EntityType>
+        <EntityType Name="tblKlasgroep">
+          <Key>
+            <PropertyRef Name="klasgroep_id" />
+          </Key>
+          <Property Name="klasgroep_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="klascode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="richting_id" Type="Int32" />
+          <Property Name="docent_id" Type="Int32" />
+          <NavigationProperty Name="tblDocent" Relationship="Self.FK__tblKlasgr__docen__15502E78" FromRole="tblKlasgroep" ToRole="tblDocent" />
+          <NavigationProperty Name="tblRichting" Relationship="Self.FK__tblKlasgr__richt__145C0A3F" FromRole="tblKlasgroep" ToRole="tblRichting" />
+          <NavigationProperty Name="tblStudents" Relationship="Self.FK__tblStuden__klasg__182C9B23" FromRole="tblKlasgroep" ToRole="tblStudent" />
+        </EntityType>
+        <EntityType Name="tblRichting">
+          <Key>
+            <PropertyRef Name="richting_id" />
+          </Key>
+          <Property Name="richting_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="omschrijving" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblKlasgroeps" Relationship="Self.FK__tblKlasgr__richt__145C0A3F" FromRole="tblRichting" ToRole="tblKlasgroep" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="student_id" />
+          </Key>
+          <Property Name="student_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voornaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="achternaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_ouder" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="rapport_wiskunde" Type="Double" />
+          <Property Name="rapport_frans" Type="Double" />
+          <Property Name="rapport_engels" Type="Double" />
+          <Property Name="rapport_sport" Type="Double" />
+          <Property Name="rapport_biologie" Type="Double" />
+          <Property Name="klasgroep_id" Type="Int32" />
+          <NavigationProperty Name="tblKlasgroep" Relationship="Self.FK__tblStuden__klasg__182C9B23" FromRole="tblStudent" ToRole="tblKlasgroep" />
+        </EntityType>
+        <Association Name="FK__tblKlasgr__docen__15502E78">
+          <End Role="tblDocent" Type="Self.tblDocent" Multiplicity="0..1" />
+          <End Role="tblKlasgroep" Type="Self.tblKlasgroep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDocent">
+              <PropertyRef Name="docent_id" />
+            </Principal>
+            <Dependent Role="tblKlasgroep">
+              <PropertyRef Name="docent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblKlasgr__richt__145C0A3F">
+          <End Role="tblRichting" Type="Self.tblRichting" Multiplicity="0..1" />
+          <End Role="tblKlasgroep" Type="Self.tblKlasgroep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRichting">
+              <PropertyRef Name="richting_id" />
+            </Principal>
+            <Dependent Role="tblKlasgroep">
+              <PropertyRef Name="richting_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblStuden__klasg__182C9B23">
+          <End Role="tblKlasgroep" Type="Self.tblKlasgroep" Multiplicity="0..1" />
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKlasgroep">
+              <PropertyRef Name="klasgroep_id" />
+            </Principal>
+            <Dependent Role="tblStudent">
+              <PropertyRef Name="klasgroep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbSchoolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblDocents" EntityType="Self.tblDocent" />
+          <EntitySet Name="tblKlasgroeps" EntityType="Self.tblKlasgroep" />
+          <EntitySet Name="tblRichtings" EntityType="Self.tblRichting" />
+          <EntitySet Name="tblStudents" EntityType="Self.tblStudent" />
+          <AssociationSet Name="FK__tblKlasgr__docen__15502E78" Association="Self.FK__tblKlasgr__docen__15502E78">
+            <End Role="tblDocent" EntitySet="tblDocents" />
+            <End Role="tblKlasgroep" EntitySet="tblKlasgroeps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblKlasgr__richt__145C0A3F" Association="Self.FK__tblKlasgr__richt__145C0A3F">
+            <End Role="tblRichting" EntitySet="tblRichtings" />
+            <End Role="tblKlasgroep" EntitySet="tblKlasgroeps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblStuden__klasg__182C9B23" Association="Self.FK__tblStuden__klasg__182C9B23">
+            <End Role="tblKlasgroep" EntitySet="tblKlasgroeps" />
+            <End Role="tblStudent" EntitySet="tblStudents" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbSchoolModelStoreContainer" CdmEntityContainer="dbSchoolEntities">
+          <EntitySetMapping Name="tblDocents">
+            <EntityTypeMapping TypeName="dbSchoolModel.tblDocent">
+              <MappingFragment StoreEntitySet="tblDocent">
+                <ScalarProperty Name="docent_id" ColumnName="docent_id" />
+                <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+                <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKlasgroeps">
+            <EntityTypeMapping TypeName="dbSchoolModel.tblKlasgroep">
+              <MappingFragment StoreEntitySet="tblKlasgroep">
+                <ScalarProperty Name="klasgroep_id" ColumnName="klasgroep_id" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="klascode" ColumnName="klascode" />
+                <ScalarProperty Name="richting_id" ColumnName="richting_id" />
+                <ScalarProperty Name="docent_id" ColumnName="docent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRichtings">
+            <EntityTypeMapping TypeName="dbSchoolModel.tblRichting">
+              <MappingFragment StoreEntitySet="tblRichting">
+                <ScalarProperty Name="richting_id" ColumnName="richting_id" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudents">
+            <EntityTypeMapping TypeName="dbSchoolModel.tblStudent">
+              <MappingFragment StoreEntitySet="tblStudent">
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+                <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+                <ScalarProperty Name="email_ouder" ColumnName="email_ouder" />
+                <ScalarProperty Name="rapport_wiskunde" ColumnName="rapport_wiskunde" />
+                <ScalarProperty Name="rapport_frans" ColumnName="rapport_frans" />
+                <ScalarProperty Name="rapport_engels" ColumnName="rapport_engels" />
+                <ScalarProperty Name="rapport_sport" ColumnName="rapport_sport" />
+                <ScalarProperty Name="rapport_biologie" ColumnName="rapport_biologie" />
+                <ScalarProperty Name="klasgroep_id" ColumnName="klasgroep_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

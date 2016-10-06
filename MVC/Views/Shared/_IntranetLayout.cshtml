@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "HHS";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Intranet </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("HHS Heist-op-den-Berg", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li> <!-- text, action, controller-->
+                    <li>@Html.ActionLink("Ons aanbod", "Richtingen", "Home")</li> <!-- Stel in dat je niets kan aanpassen vanaf hier-->
+                    <li>@Html.ActionLink("Wie is wie", "Docenten", "Home")</li> <!-- Stel in dat je niets kan aanpassen vanaf hier -->
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Intranet", "Index", "Intranet")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    @Html.ActionLink("Intranet", "Index", "Intranet", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="list-inline nav navbar-nav">
+                        <!-- Use bootstrap for css properties -->
+                        <li>@Html.ActionLink("Richtingen", "Index", "Richtingen")</li>
+                        <li>@Html.ActionLink("Klasgroepen", "Index", "Klasgroepen")</li>
+                        <li>@Html.ActionLink("Docenten", "Index", "Docenten")</li>
+                        <li>@Html.ActionLink("Studenten", "Index", "Studenten")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - HHS Heist-op-den-Berg</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

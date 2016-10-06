@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder id="contentTitle" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <link rel="stylesheet" type="text/css" href="style/global.css"/>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li id="logo">HHS</li>
+            <li><a href="\Main_Site/Home.aspx">Home</a></li>
+            <li><a href="\Main_Site/Aanbod.aspx">Ons aanbod</a></li>
+            <li><a href="\Main_Site/Docenten.aspx">Wie is wie</a></li>
+            <li><a href="\Main_Site/Contact.aspx">Contact</a></li>
+            <li><a href="\Intranet/Intranet.aspx">Intranet</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <asp:ContentPlaceHolder id="ContentBody" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <footer>
+        <p>	&copy Heilig Hart Scholen Heist-op-den-Berg</p>
+    </footer>
+</body>
+</html>

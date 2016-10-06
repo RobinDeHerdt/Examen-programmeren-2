@@ -1,0 +1,61 @@
+﻿@model HHS_MVC.Models.tblKlasgroep
+
+@{
+    ViewBag.Title = "Verwijder klasgroep";
+    Layout = "~/Views/Shared/_IntranetLayout.cshtml";
+}
+
+<h2>Verwijderen</h2>
+
+<h3>Ben je zeker dat je dit wil verwijderen?</h3>
+<div>
+    <h4>Klasgroep</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Klasnaam
+            @*@Html.DisplayNameFor(model => model.naam)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.klascode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.klascode)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.tblDocent.voornaam)*@
+            Titularis
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDocent.voornaam)
+            @Html.DisplayFor(model => model.tblDocent.achternaam)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.tblRichting.naam)*@
+            Richting
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblRichting.naam)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug", "Index")
+        </div>
+    }
+</div>

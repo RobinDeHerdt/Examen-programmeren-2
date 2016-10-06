@@ -1,0 +1,43 @@
+﻿@model HHS_MVC.Models.tblDocent
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_IntranetLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Docent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voornaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.achternaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Bewerken", "Edit", new { id = Model.docent_id }) |
+    @Html.ActionLink("Terug", "Index")
+</p>

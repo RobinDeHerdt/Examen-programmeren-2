@@ -1,0 +1,49 @@
+﻿@model HHS_MVC.Models.tblDocent
+
+@{
+    ViewBag.Title = "Docent verwijderen";
+    Layout = "~/Views/Shared/_IntranetLayout.cshtml";
+}
+
+<h2>Verwijderen</h2>
+
+<h3>Ben je zeker dat je dit wil verwijderen?</h3>
+<div>
+    <h4>Docent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voornaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.achternaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijder" class="btn btn-default" /> |
+            @Html.ActionLink("Terug", "Index")
+        </div>
+    }
+</div>

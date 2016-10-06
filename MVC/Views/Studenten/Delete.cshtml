@@ -1,0 +1,103 @@
+﻿@model HHS_MVC.Models.tblStudent
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_IntranetLayout.cshtml";
+}
+
+<h2>Verwijderen</h2>
+
+<h3>Ben je zeker dat je dit wil verwijderen?</h3>
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voornaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.achternaam)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.email_ouder)*@
+            Email ouder
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_ouder)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.rapport_wiskunde)*@
+            Cijfer Wiskunde
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rapport_wiskunde)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.rapport_frans)*@
+            Cijfer Frans
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rapport_frans)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.rapport_engels)*@
+            Cijfer Engels
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rapport_engels)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.rapport_sport)*@
+            Cijfer Sport
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rapport_sport)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.rapport_biologie)*@
+            Cijfer Biologie
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rapport_biologie)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.tblKlasgroep.naam)*@
+            Klasgroep
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblKlasgroep.naam)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug", "Index")
+        </div>
+    }
+</div>

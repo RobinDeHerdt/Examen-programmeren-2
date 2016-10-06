@@ -1,0 +1,20 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="IntranetMasterPage.master.cs" Inherits="IntranetMasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentTitle" Runat="Server">
+        <asp:ContentPlaceHolder id="NestedContentTitle" runat="server">
+        </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" Runat="Server">
+        <div class="nested-nav">
+             <ul>
+                <li><a href="\Intranet/IntranetRichtingen.aspx">Richtingen</a></li>
+                <li><a href="\Intranet/IntranetDocenten.aspx">Docenten</a></li>
+                <li><a href="\Intranet/IntranetKlassen.aspx">Klassen</a></li>
+                <li><a href="\Intranet/IntranetLeerlingen.aspx">Leerlingen</a></li>
+            </ul>
+        </div>
+    <asp:ContentPlaceHolder id="NestedContentBody" runat="server">
+        </asp:ContentPlaceHolder>
+</asp:Content>
+

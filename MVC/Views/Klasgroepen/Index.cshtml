@@ -1,0 +1,58 @@
+﻿@model IEnumerable<HHS_MVC.Models.tblKlasgroep>
+
+@{
+    ViewBag.Title = "Klasgroepen";
+    Layout = "~/Views/Shared/_IntranetLayout.cshtml";
+}
+
+<h2>Klasgroepen</h2>
+
+<p>
+    @Html.ActionLink("Maak een nieuwe klas aan", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.naam)*@
+            Klascode
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.klascode)*@
+            Volledige klasnaam
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.tblDocent.voornaam)*@
+            Klastitularis
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.tblRichting.naam)*@
+            Richting
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.klascode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblDocent.voornaam) 
+
+            @Html.DisplayFor(modelItem => item.tblDocent.achternaam) 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblRichting.naam)
+        </td>
+        <td>
+            @Html.ActionLink("Bewerken", "Edit", new { id=item.klasgroep_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.klasgroep_id }) |
+            @Html.ActionLink("Verwijderen", "Delete", new { id=item.klasgroep_id })
+        </td>
+    </tr>
+}
+
+</table>

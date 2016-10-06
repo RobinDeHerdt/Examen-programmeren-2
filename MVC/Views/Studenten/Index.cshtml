@@ -1,0 +1,90 @@
+﻿@model IEnumerable<HHS_MVC.Models.tblStudent>
+
+@{
+    ViewBag.Title = "Studenten";
+    Layout = "~/Views/Shared/_IntranetLayout.cshtml";
+}
+
+<h2>Studenten</h2>
+
+<p>
+    @Html.ActionLink("Maak nieuwe student aan", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+             @*@Html.DisplayNameFor(model => model.voornaam)*@ 
+            Voornaam
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.achternaam)*@
+            Achternaam
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.email_ouder)*@
+            Zit in klas
+        </th>
+        <th>
+            Email ouder
+            @*@Html.DisplayNameFor(model => model.tblKlasgroep.klascode)*@
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.rapport_wiskunde)*@
+            WIS
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.rapport_frans)*@
+            FRA
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.rapport_engels)*@
+            ENG
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.rapport_sport)*@
+            LOS
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.rapport_biologie)*@
+            BIO
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.voornaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.achternaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblKlasgroep.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email_ouder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rapport_wiskunde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rapport_frans)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rapport_engels)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rapport_sport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rapport_biologie)
+        </td>     
+        <td>
+            @Html.ActionLink("Bewerken", "Edit", new { id=item.student_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.student_id }) |
+            @Html.ActionLink("Verwijderen", "Delete", new { id=item.student_id })
+        </td>
+    </tr>
+}
+
+</table>

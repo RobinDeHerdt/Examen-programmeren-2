@@ -1,0 +1,214 @@
+﻿        * {
+            font-family:'Segoe UI Semilight','Segoe UI',Tahoma,Helvetica,sans-serif;
+        }
+
+        body {
+            margin: 0 auto;
+            top: 0;
+            left: 0;
+            z-index: -10;
+            background-color: #CFD8DC;
+        }
+        .nav {
+            top: 0 auto;
+            left: 0;
+            background-color: #303F9F;
+            width: 100%;
+        }
+        .nav ul {
+            margin: 0 auto;
+            margin-left:8%;
+            width: 82%;
+        }
+        .nav li {
+            font-size: 20px;
+            display: inline-block;
+            padding: 20px;
+            border-left: 2px solid white;
+        }
+
+        .nav li:nth-child(2) {
+            border-left: 0px;
+        }
+        .nav li a:visited, .nav li a {
+            color: white;
+        }
+
+        .nav li a:hover {
+            color: black;
+        }
+
+        .nav li a:link {
+            text-decoration: none;
+        }
+
+        #logo {
+            padding: 20px 50px 20px 50px;
+            color:black;
+            background-color: white;
+        }
+
+        h1 {
+            margin-top: 50px;
+            width : 100%;
+            font-size: 34px;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            background-color: #303F9F;
+            color: white;
+            width: 100%;
+            text-align: center;
+        }
+
+        .content {
+            margin-bottom: 100px;
+        }
+
+        .table, th, td{
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        .table tr:nth-child(even){
+            background: #B6B6B6;
+        }
+
+        .table tr:nth-child(odd){
+            background: white;
+        }
+
+        .table {
+            margin-top: 50px;
+            width : 100%;
+        }
+
+        .table th {
+            height: 50px;
+            text-align:center;
+            background-color: #212121;
+            color: white;
+            border-right: 1px solid white;
+            border-bottom: 1px solid white;
+        }
+
+        .table th:last-child
+        {
+            border-right: 1px solid black;
+        }
+
+        .table td {
+            height: 20px;
+            vertical-align: bottom;
+        }
+
+        .table td, .table th {
+            padding: 15px;
+            text-align:left;
+        }
+
+        .content {
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .artikel {
+            padding: 10px;
+            background-color: white;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .arrow {
+            color: white;
+            text-decoration: none;
+        }
+
+        .arrow:visited {
+            color: white;
+        }
+
+        .nested-nav {
+            background-color: #121212;
+            color: white;
+            width:100%;
+        }
+
+        .nested-nav li{
+            display: inline-block;
+            width: 24%;
+            padding:10px 0 10px 0;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .nested-nav li a:link {
+            color: white;
+            text-decoration: none;
+        }
+        .nested-nav li a:visited {
+            color: white;
+        }
+        .nested-nav li a:hover{
+            text-decoration: underline;
+        }
+
+
+        form {
+            margin-left: 20px;
+        }
+       
+        form table tr td input, .dropDownMenu
+        {
+            width :200px;
+            margin-left: 50px;
+        }
+
+        .formcontainer {
+            width: 100%;
+            background-color: white;
+            padding: 10px 0 10px 0;
+        }
+
+        .formtable tr td{
+            border: none;
+        }
+
+        .centeredtext {
+            font-size: 34px;
+            margin-top: 100px;
+            text-align: center;
+        }
+        
+        .errormessage {
+            color: darkred;
+        }
+
+        .editForm {
+            display: none;
+        }
+
+        .editlink {
+            margin-left: 20px;
+            margin-right:-20px;
+        }
+
+        .goBack, .goBack:visited, .goBack:link {
+            color:black;
+            font-size: 20px;
+            text-align:center;
+        }
+
+        .centeredvalue, .centeredvalue a:visited, .centeredvalue a:link {
+            color: mediumblue;
+            text-align: center !important;
+        }
+
+        .error {
+            text-align:center;
+            font-size: 34px;
+            color: darkred;
+        }
+
+        

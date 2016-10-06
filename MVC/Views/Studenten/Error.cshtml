@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Error</h2>
+<p>Sorry, er ging iets mis bij het uitvoeren van de database-query.</p><br />
+
+<h3>Mogelijke oorzaken van dit probleem</h3>
+<ul>
+    <li>Deze waarde was afhankelijk van een andere waarde. Gelieve deze eerst te verwijderen.</li>
+    <li>Onze server werd overbelast. Gelieve het binnen een paar minuten nog een keer te proberen.</li>
+</ul>
+
+<br />
+<div>
+    @Html.ActionLink("Terug", "Index")
+</div>
